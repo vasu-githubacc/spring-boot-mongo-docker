@@ -27,7 +27,7 @@ node{
     }
     
     stage("Deploy to docker swarm cluster"){
-        sshagent(['Docker_Swarm_Manager_Dev']) {
+       sshagent(['docker_hub_pwd_for_swarm_new'])  {
 		    sh 'scp -o StrictHostKeyChecking=no  docker-compose.yml ubuntu@172.31.47.232:'
 		    //sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.232 docker stack rm springboot'
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.47.232 docker stack deploy --prune --compose-file docker-compose.yml springboot'
